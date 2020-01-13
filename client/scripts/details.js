@@ -1,16 +1,29 @@
-/* const BASIC_URL = "http://127.0.0.1:8888/client";
-const pathUrl = "/v2/movie/top250";
+const BASIC_URL = "http://127.0.0.1:8888/";
+const movieId = "26942674";
+function _$(className) {
+	return document.getElementsByClassName(className);
+}
 
 ajax({
-	url: BASIC_URL + pathUrl,
+	url: BASIC_URL + "/v2/movie/subject/" + movieId + "?apikey=0df993c66c0c636e29ecbb5344252a4a",
 	method: "GET",
-	data: {
-		apikey: "0df993c66c0c636e29ecbb5344252a4a",
-	},
 	success: function(response) {
 		console.log(response);
-	}, // 请求成功后调用此方法
+		renderMovieDetailedInfo(response);
+	},
 	fail: function(error) {
 		console.log("request fail!");
-	}, // 请求失败或出错后调用此方法
-}); */
+	},
+});
+
+function renderMovieDetailedInfo(movieObj) {
+	_$("movie-title")[0].innerHTML = `${movieObj.title}(${movieObj.year})`;
+	_$("movie-poster")[0].innerHTML = `<img src="${movieObj.images.small}" />`;
+	_$("director")[0].innerHTML = movieObj.directors.map(elem => elem.name);
+	_$("casts")[0].innerHTML = movieObj.casts.map(elem => elem.name);
+	_$("genres")[0].innerHTML = movieObj.genres;
+	_$("countries")[0].innerHTML = movieObj.countries;
+	_$("pubdate")[0].innerHTML = `${movieObj.mainland_pubdate}(中国大陆)/${movieObj.pubdate}(${movieObj.countries})`;
+	_$("durations")[0].innerHTML = movieObj.durations;
+	_$("rating")[0].innerHTML = `${movieObj.rating.average}/${movieObj.rating.max}`;
+}
