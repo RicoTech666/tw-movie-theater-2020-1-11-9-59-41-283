@@ -26,4 +26,5 @@ function renderMovieDetailedInfo(movieObj) {
 	_$("pubdate")[0].innerHTML = `${movieObj.mainland_pubdate}(中国大陆)/${movieObj.pubdate}(${movieObj.countries})`;
 	_$("durations")[0].innerHTML = movieObj.durations;
 	_$("rating")[0].innerHTML = `${movieObj.rating.average}/${movieObj.rating.max}`;
+	_$("summary-content")[0].innerHTML = movieObj.summary;
 }
