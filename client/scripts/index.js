@@ -10,13 +10,13 @@ function loadAllData() {
 			"&start=0&count=250",
 		method: "GET",
 		success: function(res) {
-			getMoviesgenres(res);
+			getMoviesGenres(res);
 			//addAllData(res);
 		}
 	});
 }
 
-function getMoviesgenres(movies) {
+function getMoviesGenres(movies) {
 	let genres = [];
 	let movieGenres = [];
 	movies.subjects.forEach(item => {
@@ -29,7 +29,14 @@ function getMoviesgenres(movies) {
 			}
 		});
 	});
-	console.log(movieGenres);
+	addMoviesGenres(movieGenres);
+}
+
+function addMoviesGenres(genres) {
+	let genersList = document.getElementsByClassName("genres-name")[0];
+	genres.forEach(genre => {
+		genersList.innerHTML += `<li class="movie-genres">${genre}</li>`;
+	})
 }
 
 loadAllData();
