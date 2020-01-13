@@ -3,21 +3,33 @@ let movieId = "26942674";
 
 function loadAllData() {
 	ajax({
-		url: BASIC_URL + "/v2/movie/top250?apikey=0df993c66c0c636e29ecbb5344252a4a",
+		url:
+			BASIC_URL +
+			"/v2/movie/top250" +
+			"?apikey=0df993c66c0c636e29ecbb5344252a4a" +
+			"&start=0&count=250",
 		method: "GET",
 		success: function(res) {
-      console.log(res);
-      getMoviesgenres(res);
+			getMoviesgenres(res);
 			//addAllData(res);
 		}
 	});
 }
 
 function getMoviesgenres(movies) {
-  movies.subjects.forEach(item => {
-		let genres = item.genres;
-		console.log(genres);
+	let genres = [];
+	let movieGenres = [];
+	movies.subjects.forEach(item => {
+		genres.push(item.genres);
 	});
+	genres.forEach(item => {
+		item.forEach(genre => {
+			if (movieGenres.indexOf(genre) === -1) {
+				movieGenres.push(genre);
+			}
+		});
+	});
+	console.log(movieGenres);
 }
 
 loadAllData();
