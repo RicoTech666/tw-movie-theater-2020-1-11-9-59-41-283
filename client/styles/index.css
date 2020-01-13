@@ -1,0 +1,49 @@
+* {
+	margin: 0;
+	padding: 0;
+	background-color: #ffffff;
+}
+
+.navbar {
+	height: 60px;
+	border-bottom: 1px solid #e5ebe4;
+}
+
+.nav-content {
+	position: relative;
+	width: 60%;
+	margin: 0 auto;
+	padding: 10px 0;
+	zoom: 1;
+	/*font-size: 30px;*/
+}
+
+.nav-content a {
+	text-decoration: none;
+	background-color: transparent;
+}
+
+.nav-logo {
+	float: left;
+  width: 150px;
+  margin-right: 30px;
+	font-size: 30px;
+	color: #27a;
+}
+
+.nav-search-bar {
+	width: 45%;
+  padding: 10px;
+  margin-right: 10px;
+	border: 0;
+	border-radius: 5px;
+	outline: none;
+	box-shadow: 1px 1px 0px #d1d1d1;
+}
+
+.nav-search-btn {
+	width: 35px;
+  height: 30px;
+  outline: none;
+  background-color: #919aa1;
+}
