@@ -12,18 +12,21 @@ const proxyServer = http.createServer((request, response) => {
 
 	if (parsedUrl.pathname.indexOf(DOUBAN_MOVIE) > -1) {
 		http
-			.get(`http://api.douban.com${parsedUrl.pathname}?${parsedUrl.query}`, res => {
-				var body = "";
+			.get(
+				`http://api.douban.com${parsedUrl.pathname}?${parsedUrl.query}`,
+				res => {
+					var body = "";
 
-				res.on("data", data => {
-					body += data;
-				});
+					res.on("data", data => {
+						body += data;
+					});
 
-				res.on("end", () => {
-					response.statusCode = res.statusCode;
-					response.end(body);
-				});
-			})
+					res.on("end", () => {
+						response.statusCode = res.statusCode;
+						response.end(body);
+					});
+				}
+			)
 			.on("error", error => {
 				console.log("代理失败:" + error.message);
 			});
