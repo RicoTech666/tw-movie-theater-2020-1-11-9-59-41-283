@@ -1,4 +1,4 @@
-const BASIC_URL = "http://127.0.0.1:8888/";
+const BASIC_URL = "http://127.0.0.1:8888";
 const movieId = "26942674";
 function _$(className) {
 	return document.getElementsByClassName(className);
@@ -8,8 +8,8 @@ ajax({
 	url: BASIC_URL + "/v2/movie/subject/" + movieId + "?apikey=0df993c66c0c636e29ecbb5344252a4a",
 	method: "GET",
 	success: function(response) {
-		console.log(response);
 		renderMovieDetailedInfo(response);
+		getSimilarMovies(response);
 	},
 	fail: function(error) {
 		console.log("request fail!");
@@ -27,4 +27,23 @@ function renderMovieDetailedInfo(movieObj) {
 	_$("durations")[0].innerHTML = movieObj.durations;
 	_$("rating")[0].innerHTML = `${movieObj.rating.average}/${movieObj.rating.max}`;
 	_$("summary-content")[0].innerHTML = movieObj.summary;
+}
+
+function getSimilarMovies(movieObj) {
+	ajax({
+		url: BASIC_URL + "/v2/movie/top250" + "?apikey=0df993c66c0c636e29ecbb5344252a4a" + "&start=0&count=20",
+		method: "GET",
+		success: function(response) {
+			const currentMovie = movieObj;
+			findSimilarMovies(currentMovie, response);
+		},
+		fail: function(error) {
+			console.log("request fail!");
+		},
+	});
+}
+
+function findSimilarMovies(currentMovie, response) {
+	const currentMovieGenres = currentMovie.genres;
+	console.log(response);
 }
