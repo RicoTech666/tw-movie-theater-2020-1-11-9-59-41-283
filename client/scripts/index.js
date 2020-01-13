@@ -6,10 +6,18 @@ function loadAllData() {
 		url: BASIC_URL + "/v2/movie/top250?apikey=0df993c66c0c636e29ecbb5344252a4a",
 		method: "GET",
 		success: function(res) {
+      console.log(res);
+      getMoviesgenres(res);
 			//addAllData(res);
 		}
 	});
 }
 
-loadAllData();
+function getMoviesgenres(movies) {
+  movies.subjects.forEach(item => {
+		let genres = item.genres;
+		console.log(genres);
+	});
+}
 
+loadAllData();
