@@ -45,5 +45,9 @@ function getSimilarMovies(movieObj) {
 
 function findSimilarMovies(currentMovie, response) {
 	const currentMovieGenres = currentMovie.genres;
-	console.log(response);
+	console.log(typeof currentMovieGenres);
+	const similarMovies = response.subjects.filter(elem => elem.genres === ["犯罪", "剧情"]);
+	response.subjects.forEach(movie => {
+		console.log(typeof movie.genres);
+	});
 }
