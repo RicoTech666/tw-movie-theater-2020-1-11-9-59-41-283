@@ -31,7 +31,8 @@ function renderMovieDetailedInfo(movieObj) {
 
 function getSimilarMovies(movieObj) {
 	ajax({
-		url: BASIC_URL + "/v2/movie/top250" + "?apikey=0df993c66c0c636e29ecbb5344252a4a" + "&start=0&count=20",
+		url:
+			BASIC_URL + "/v2/movie/in_theaters" + "?apikey=0df993c66c0c636e29ecbb5344252a4a" + "&city=北京&start=0&count=100",
 		method: "GET",
 		success: function(response) {
 			const currentMovie = movieObj;
@@ -44,10 +45,15 @@ function getSimilarMovies(movieObj) {
 }
 
 function findSimilarMovies(currentMovie, response) {
-	const currentMovieGenres = currentMovie.genres;
-	console.log(typeof currentMovieGenres);
-	const similarMovies = response.subjects.filter(elem => elem.genres === ["犯罪", "剧情"]);
-	response.subjects.forEach(movie => {
-		console.log(typeof movie.genres);
-	});
+	const currentMovieGenres = currentMovie.genres.toString();
+	let similarMovies = response.subjects.filter(
+		elem => elem.genres.toString().includes(currentMovieGenres) || currentMovieGenres.includes(elem.genres.toString())
+	);
+	_$("similar-movie-content")[0].innerHTML = similarMovies.reduce((acc, cur) => {
+		return (acc += `<div class="similar-movie-cell">
+		<div class="similar-movie-poster"><img src="${cur.images.small}" /></div>
+		<div class = "similar-movie-title">${cur.title}</div>
+		<div class = "similar-movie-rating">${cur.rating.average}/${cur.rating.max}</div>	
+		</div>`);
+	}, "");
 }
