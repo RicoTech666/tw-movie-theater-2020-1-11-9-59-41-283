@@ -1,5 +1,6 @@
+const movieId = window.location.search.split("?id=")[1];
 const BASIC_URL = "http://127.0.0.1:8888";
-const movieId = "26942674";
+
 function _$(className) {
 	return document.getElementsByClassName(className);
 }
@@ -46,14 +47,22 @@ function getSimilarMovies(movieObj) {
 
 function findSimilarMovies(currentMovie, response) {
 	const currentMovieGenres = currentMovie.genres.toString();
+	const currentMovieId = currentMovie.id;
 	let similarMovies = response.subjects.filter(
-		elem => elem.genres.toString().includes(currentMovieGenres) || currentMovieGenres.includes(elem.genres.toString())
+		elem =>
+			(elem.genres.toString().includes(currentMovieGenres) || currentMovieGenres.includes(elem.genres.toString())) &&
+			elem.id !== currentMovieId
 	);
-	_$("similar-movies-content")[0].innerHTML = similarMovies.reduce((acc, cur) => {
+	let truncatedMovies = truncateMovieArr(similarMovies, 10);
+	_$("similar-movies-content")[0].innerHTML = truncatedMovies.reduce((acc, cur) => {
 		return (acc += `<div class="similar-movie-cell">
 		<div class="similar-movie-poster"><img src="${cur.images.small}" /></div>
 		<div class = "similar-movie-title">${cur.title}</div>
 		<div class = "similar-movie-rating"><span>${cur.rating.average}/${cur.rating.max}</span></div>	
 		</div>`);
 	}, "");
+}
+
+function truncateMovieArr(movieArr, cutNum) {
+	return movieArr.filter((movie, index) => index < cutNum);
 }
