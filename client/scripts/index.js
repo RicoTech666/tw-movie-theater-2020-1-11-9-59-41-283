@@ -43,9 +43,9 @@ function showMovieInfo(movies) {
           <img class="movie-img" src=${movie.images.small} alt="movie's image">
         </a>
         <div class="card-cotent">
-          <h4 class="movie-title">${movie.title}</h4>
-          <p class="movie-info">年份: ${movie.year}</p>
-          <p class="movie-info">评分: ${movie.rating.average}</p>
+          <h4 class="movie-title">${movie.title} ${movie.rating.average} (${
+				movie.year
+			})</h4>
           <p class="movie-info">导演: ${movie.directors.map(
 						movie => movie.name
 					)}</p>
