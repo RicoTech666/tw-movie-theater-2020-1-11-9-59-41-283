@@ -41,6 +41,44 @@
 	background: rgba(131, 131, 131, 0.4);
 }
 
+.similar-movies-banner {
+	margin: 40px 0 20px;
+}
+
 .summary p {
 	text-indent: 2em;
+}
+
+.similar-movies-content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.similar-movie-cell {
+	width: 20%;
+}
+
+.similar-movie-poster img {
+	display: block;
+	width: 50%;
+	height: 300px;
+	margin: auto;
+}
+
+.similar-movie-title {
+	margin: 20px 0 10px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.similar-movie-rating {
+	margin: 0 0 40px;
+	text-align: center;
+}
+
+.similar-movie-rating span {
+	padding: 6px;
+	border-radius: 3px;
+	background-color: rgba(131, 131, 131, 0.4);
 }

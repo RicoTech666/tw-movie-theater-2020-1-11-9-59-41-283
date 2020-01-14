@@ -49,11 +49,11 @@ function findSimilarMovies(currentMovie, response) {
 	let similarMovies = response.subjects.filter(
 		elem => elem.genres.toString().includes(currentMovieGenres) || currentMovieGenres.includes(elem.genres.toString())
 	);
-	_$("similar-movie-content")[0].innerHTML = similarMovies.reduce((acc, cur) => {
+	_$("similar-movies-content")[0].innerHTML = similarMovies.reduce((acc, cur) => {
 		return (acc += `<div class="similar-movie-cell">
 		<div class="similar-movie-poster"><img src="${cur.images.small}" /></div>
 		<div class = "similar-movie-title">${cur.title}</div>
-		<div class = "similar-movie-rating">${cur.rating.average}/${cur.rating.max}</div>	
+		<div class = "similar-movie-rating"><span>${cur.rating.average}/${cur.rating.max}</span></div>	
 		</div>`);
 	}, "");
 }
