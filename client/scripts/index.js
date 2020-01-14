@@ -14,7 +14,7 @@ function loadAllData() {
 
 function getMoviesGenres(movies) {
 	let movieGenres = new Set(movies.subjects.map(movie => movie.genres).flat());
-
+	
 	addMoviesGenres([...movieGenres]);
 }
 
