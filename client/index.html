@@ -12,7 +12,7 @@
 			<nav class="navbar">
 				<div class="nav-content">
 					<a class="nav-logo" href="javascript:location.reload()">思沃影院</a>
-					<form action="#" onsubmit="searchMovieByKeyWords()">
+					<form action="#" onsubmit="searchMovieByKeyWords()" id="search-form">
 						<input class="nav-search-bar" type="text" placeholder="搜索电影"></input>
 					  <button class="nav-search-btn" type="submit">搜索</button>
 				  </form>
@@ -27,6 +27,7 @@
 			</div>
 			<div class="movie-show">
 				<div class="movie-list"></div>
+				<div class="search-movie-lists"></div>
 			</div>
 		</div>
 		<script src="./scripts/ajax.js"></script>

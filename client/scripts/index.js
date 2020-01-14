@@ -1,6 +1,7 @@
 let BASIC_URL = "http://127.0.0.1:8888";
 //let movieId = "26942674";
-
+let moviesData;
+let moviesList = document.getElementsByClassName("movie-list")[0];
 function loadAllData() {
 	ajax({
 		url:
@@ -10,6 +11,7 @@ function loadAllData() {
 			"&start=0&count=250",
 		method: "GET",
 		success: function(res) {
+			moviesData = res;
 			getMoviesGenres(res);
 			getAllMovies(res);
 		}
@@ -31,14 +33,15 @@ function addMoviesGenres(genres) {
 
 function getAllMovies(movies) {
 	let moviesInfo = movies.subjects;
-	showMovieInfo(moviesInfo);
+	let list = showMovieInfo(moviesInfo);
+	moviesList.innerHTML = list;
 }
 
 function showMovieInfo(movies) {
-	let moviesList = document.getElementsByClassName("movie-list")[0];
+	let list = "";
 	movies.forEach(movie => {
 		if (movie) {
-			moviesList.innerHTML += `<div class="movie-info-card">
+			list += `<div class="movie-info-card">
 			  <a href="./pages/details.html?id=${movie.id}" target="_blank">
           <img class="movie-img" src=${movie.images.small} alt="movie's image">
         </a>
@@ -60,6 +63,23 @@ function showMovieInfo(movies) {
       </div>`;
 		}
 	});
+	return list;
+}
+
+function searchMovieByKeyWords() {
+	const keyWords = document.getElementsByClassName("nav-search-bar")[0].value;
+	const singleMovie = moviesData.subjects.filter(item => {
+		return item.title.includes(keyWords);
+	});
+
+	if (singleMovie.length) {
+		let searchList = document.getElementsByClassName("search-movie-lists")[0];
+		let list = showMovieInfo(singleMovie);
+		searchList.innerHTML = list;
+		moviesList.style.display = "none";
+	} else {
+		alert("没有找到该电影");
+	}
 }
 
 loadAllData();
