@@ -37,7 +37,7 @@ function getSimilarMovies(movieObj) {
 		method: "GET",
 		success: function(response) {
 			const currentMovie = movieObj;
-			findSimilarMovies(currentMovie, response);
+			renderSimilarMovies(currentMovie, response);
 		},
 		fail: function(error) {
 			console.log("request fail!");
@@ -45,7 +45,7 @@ function getSimilarMovies(movieObj) {
 	});
 }
 
-function findSimilarMovies(currentMovie, response) {
+function renderSimilarMovies(currentMovie, response) {
 	const currentMovieGenres = currentMovie.genres.toString();
 	const currentMovieId = currentMovie.id;
 	let similarMovies = response.subjects.filter(
@@ -56,7 +56,11 @@ function findSimilarMovies(currentMovie, response) {
 	let truncatedMovies = truncateMovieArr(similarMovies, 10);
 	_$("similar-movies-content")[0].innerHTML = truncatedMovies.reduce((acc, cur) => {
 		return (acc += `<div class="similar-movie-cell">
-		<div class="similar-movie-poster"><img src="${cur.images.small}" /></div>
+		<div class="similar-movie-poster">
+ 		<a href="./details.html?id=${cur.id}" target="_blank">
+		<img src="${cur.images.small}" />
+		</a>
+		</div>
 		<div class = "similar-movie-title">${cur.title}</div>
 		<div class = "similar-movie-rating"><span>${cur.rating.average}/${cur.rating.max}</span></div>	
 		</div>`);
