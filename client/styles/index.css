@@ -60,9 +60,8 @@
 	margin: 65px 0 0 0;
 }
 
-
 .genres-list {
-	width: 130rem;
+	width: 100rem;
 	display: flex;
 	flex-direction: column;
 	line-height: 50px;
@@ -105,17 +104,17 @@
 
 .movie-info {
 	margin-top: 5px;
-} 
+}
 
 .movie-description {
 	width: 70px;
-    height: 25px;
-    margin-top: 15px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    background-color: cadetblue;
-    color: white;
-    text-align: center;
-    cursor: pointer;
-} 
+	height: 25px;
+	margin-top: 15px;
+	border: none;
+	border-radius: 5px;
+	background-color: cadetblue;
+	color: white;
+	text-align: center;
+	outline: none;
+	cursor: pointer;
+}
