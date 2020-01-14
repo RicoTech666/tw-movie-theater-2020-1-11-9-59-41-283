@@ -56,7 +56,16 @@
 
 .movie-page {
 	display: flex;
+	flex: auto;
 	margin: 65px 0 0 0;
+}
+
+
+.genres-list {
+	width: 130rem;
+	display: flex;
+	flex-direction: column;
+	line-height: 50px;
 }
 
 .genres-head {
@@ -66,16 +75,47 @@
 	color: #27a;
 }
 
-.genres-name {
-	display: flex;
-	flex-grow: 1;
-	flex-direction: column;
-	line-height: 50px;
-	text-align: center;
-}
-
 .genres-name > .movie-genres {
 	font-size: 20px;
+	text-align: center;
 	cursor: pointer;
 	color: #27a;
 }
+
+.movie-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+.movie-info-card {
+	width: 13rem;
+	height: 600px;
+	margin: 20px;
+}
+
+.movie-img {
+	height: 60%;
+}
+
+.card-cotent {
+	height: 40%;
+	margin-top: 5px;
+}
+
+.movie-info {
+	margin-top: 5px;
+} 
+
+.movie-description {
+	width: 70px;
+    height: 25px;
+    margin-top: 15px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: cadetblue;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+} 
