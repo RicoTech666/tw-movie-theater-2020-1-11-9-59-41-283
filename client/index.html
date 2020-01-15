@@ -8,16 +8,16 @@
 		<link rel="stylesheet" href="./styles/index.css" />
 	</head>
 	<body>
-			<div class="header">
-				<div class="nav-content">
-					<a class="nav-logo" href="javascript:location.reload()">ThoughtWorks</a>
-					<form action="#" id="search-form">
-						<input class="nav-search-bar" type="text" placeholder="搜索电影" onkeyup="searchMovieByKeyWords()"></input>
-					  <button class="nav-search-btn" type="submit">搜索</button>
-					</form>
-					<ul class="search-movie-lists"></ul>
-				</div>
-		  </div>
+		<div class="header">
+			<div class="nav-content">
+				<a class="nav-logo" href="javascript:location.reload()">ThoughtWorks</a>
+				<form action="#" id="search-form">
+					<input class="nav-search-bar" type="text" placeholder="搜索电影" onkeyup="searchMovieByKeyWords()" />
+					<button class="nav-search-btn" type="submit">搜索</button>
+				</form>
+				<ul class="search-movie-lists"></ul>
+			</div>
+		</div>
 
 		<div class="movie-page">
 			<div class="genres-list">
@@ -26,7 +26,7 @@
 			</div>
 			<div class="movie-list"></div>
 		</div>
-		
+
 		<script src="./scripts/ajax.js"></script>
 		<script src="./scripts/index.js"></script>
 	</body>
