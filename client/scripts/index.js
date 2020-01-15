@@ -59,18 +59,20 @@ function createRenderedMovieContent(movies) {
 
 function searchMovieByKeyWords() {
 	const keyWords = _$("nav-search-bar")[0].value;
-	const searchList = _$("search-movie-lists")[0];
-	searchList.innerHTML = "";
-	const searchBar = _$("nav-search-bar")[0];
-	const singleMovie = moviesData.subjects.filter(item => item.title.includes(keyWords));
-	console.log(singleMovie);
 
-	if (singleMovie.length) {
-		searchList.style.top = searchBar.style.top + searchBar.style.height;
-		searchList.style.left = searchBar.style.left + "150px";
-		searchList.style.width = searchBar.style.width;
-		searchList.style.display = "block";
-		let list = showSearchList(singleMovie);
+	const searchList = _$("search-movie-lists")[0];
+	const searchBar = _$("nav-search-bar")[0];
+	const matchedMovies = moviesData.subjects.filter(item => item.title.includes(keyWords));
+	searchList.style.top = searchBar.style.top + searchBar.style.height;
+	searchList.style.left = searchBar.style.left + "150px";
+	searchList.style.width = searchBar.style.width;
+	searchList.style.display = "block";
+	if ("" === keyWords) {
+		searchList.innerHTML = "";
+		return;
+	}
+	if (matchedMovies.length > 0) {
+		let list = showSearchList(matchedMovies);
 		searchList.innerHTML = list;
 	} else {
 		searchList.innerHTML = "骚奥瑞，没有找到对应的电影信息:D";
