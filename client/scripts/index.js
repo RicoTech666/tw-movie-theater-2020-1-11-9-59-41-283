@@ -16,22 +16,28 @@ function loadAllData() {
 
 function getMoviesGenres(movies) {
 	let movieGenres = new Set(movies.subjects.map(movie => movie.genres).flat());
-
 	addMoviesGenres([...movieGenres]);
 }
 
 function addMoviesGenres(genres) {
 	let genersList = document.getElementsByClassName("genres-name")[0];
 	genres.forEach(genre => {
-		genersList.innerHTML += `<li><button class="movie-genres">${genre}</button></li>`;
+		genersList.innerHTML += `<li><button class="movie-genres" onclick="displayByGenres()">${genre}</button></li>`;
 	});
+}
+
+function displayByGenres() {
+	const clickedGenreBtn = event.target;
+	const selectedGenre = clickedGenreBtn.innerHTML;
+	let selectedMovies = moviesData.subjects.filter(elem => elem.genres.toString().includes(selectedGenre));
+	let moviesList = document.getElementsByClassName("movie-list")[0];
+	moviesList.innerHTML = showMovieInfo(selectedMovies);
 }
 
 function getAllMovies(movies) {
 	let moviesList = document.getElementsByClassName("movie-list")[0];
 	let moviesInfo = movies.subjects;
-	let list = showMovieInfo(moviesInfo);
-	moviesList.innerHTML = list;
+	moviesList.innerHTML = showMovieInfo(moviesInfo);
 }
 
 function showMovieInfo(movies) {
@@ -75,11 +81,11 @@ function searchMovieByKeyWords() {
 		searchList.style.display = "block";
 		let list = showSearchList(singleMovie);
 		searchList.innerHTML = list;
-	} else {
+	} /* else {
 		alert("没有找到该电影");
 		document.getElementsByClassName("nav-search-bar")[0].value = "";
 		searchList.style.display = "none";
-	}
+	} */
 }
 
 function showSearchList(movies) {
