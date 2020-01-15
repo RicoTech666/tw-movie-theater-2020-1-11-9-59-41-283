@@ -136,8 +136,15 @@
 }
 
 .search-movie-lists {
-	position: relative;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
+	position: absolute;
+	display: block;
+	margin: 2px;
+	border: 1px solid #ddd;
+	background-color: #fff;
+	z-index: 99;
+}
+
+.search-movie-lists li {
+	border-bottom: 1px solid #eee;
+	overflow: hidden;
 }
