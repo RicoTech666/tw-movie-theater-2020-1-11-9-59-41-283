@@ -4,17 +4,13 @@ let moviesData;
 let moviesList = document.getElementsByClassName("movie-list")[0];
 function loadAllData() {
 	ajax({
-		url:
-			BASIC_URL +
-			"/v2/movie/in_theaters" +
-			"?apikey=0df993c66c0c636e29ecbb5344252a4a" +
-			"&start=0&count=250",
+		url: BASIC_URL + "/v2/movie/in_theaters" + "?apikey=0df993c66c0c636e29ecbb5344252a4a" + "&start=0&count=250",
 		method: "GET",
 		success: function(res) {
 			moviesData = res;
 			getMoviesGenres(res);
 			getAllMovies(res);
-		}
+		},
 	});
 }
 
@@ -27,7 +23,7 @@ function getMoviesGenres(movies) {
 function addMoviesGenres(genres) {
 	let genersList = document.getElementsByClassName("genres-name")[0];
 	genres.forEach(genre => {
-		genersList.innerHTML += `<li class="movie-genres">${genre}</li>`;
+		genersList.innerHTML += `<li><button class="movie-genres">${genre}</button></li>`;
 	});
 }
 
@@ -46,15 +42,9 @@ function showMovieInfo(movies) {
           <img class="movie-img" src=${movie.images.small} alt="movie's image">
         </a>
         <div class="card-cotent">
-          <h4 class="movie-title">${movie.title} ${movie.rating.average} (${
-				movie.year
-			})</h4>
-          <p class="movie-info">导演: ${movie.directors.map(
-						movie => movie.name
-					)}</p>
-          <p class="movie-info">演员: ${movie.casts.map(
-						movie => movie.name
-					)}</p>
+          <h4 class="movie-title">${movie.title} ${movie.rating.average} (${movie.year})</h4>
+          <p class="movie-info">导演: ${movie.directors.map(movie => movie.name)}</p>
+          <p class="movie-info">演员: ${movie.casts.map(movie => movie.name)}</p>
           <p class="movie-info">类别: ${movie.genres}</p>
 				  <a href="./pages/details.html?id=${movie.id}" target="_blank">
 					  <button class="movie-description">查看详情</button>

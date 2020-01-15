@@ -72,16 +72,24 @@
 
 .genres-head {
 	padding: 10px;
-	background-color: #f5f5f5;
 	font-size: 25px;
+	color: #27a;
+	background-color: #f5f5f5;
+}
+
+.genres-name li {
+	background-color: #f5f5f5;
+}
+
+.movie-genres {
+	padding: 5px;
+	border: 0;
+	font-size: 20px;
 	color: #27a;
 }
 
-.genres-name > .movie-genres {
-	font-size: 20px;
-	text-align: center;
-	cursor: pointer;
-	color: #27a;
+.movie-genres:hover {
+	opacity: 0.8;
 }
 
 .movie-list {
