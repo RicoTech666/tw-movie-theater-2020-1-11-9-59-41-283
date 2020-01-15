@@ -1,6 +1,9 @@
 let BASIC_URL = "http://127.0.0.1:8888";
-//let movieId = "26942674";
 let moviesData;
+
+function _$(className) {
+	return document.getElementsByClassName(className);
+}
 
 function loadAllData() {
 	ajax({
@@ -9,42 +12,35 @@ function loadAllData() {
 		success: function(res) {
 			moviesData = res;
 			getMoviesGenres(res);
-			getAllMovies(res);
+			renderAllMovies(res);
 		},
 	});
 }
 
 function getMoviesGenres(movies) {
 	let movieGenres = new Set(movies.subjects.map(movie => movie.genres).flat());
-	addMoviesGenres([...movieGenres]);
+	renderMoviesGenres([...movieGenres]);
 }
 
-function addMoviesGenres(genres) {
-	let genersList = document.getElementsByClassName("genres-name")[0];
-	genres.forEach(genre => {
-		genersList.innerHTML += `<li><button class="movie-genres" onclick="displayByGenres()">${genre}</button></li>`;
-	});
+function renderMoviesGenres(genres) {
+	_$("genres-name")[0].innerHTML = genres.reduce((acc, cur) => {
+		return (acc += `<li><button class="movie-genres" onclick="displayByGenres()">${cur}</button></li>`);
+	}, "");
 }
 
 function displayByGenres() {
-	const clickedGenreBtn = event.target;
-	const selectedGenre = clickedGenreBtn.innerHTML;
+	const selectedGenre = event.target.innerHTML;
 	let selectedMovies = moviesData.subjects.filter(elem => elem.genres.toString().includes(selectedGenre));
-	let moviesList = document.getElementsByClassName("movie-list")[0];
-	moviesList.innerHTML = showMovieInfo(selectedMovies);
+	_$("movie-list")[0].innerHTML = createRenderedMovieContent(selectedMovies);
 }
 
-function getAllMovies(movies) {
-	let moviesList = document.getElementsByClassName("movie-list")[0];
-	let moviesInfo = movies.subjects;
-	moviesList.innerHTML = showMovieInfo(moviesInfo);
+function renderAllMovies(movies) {
+	_$("movie-list")[0].innerHTML = createRenderedMovieContent(movies.subjects);
 }
 
-function showMovieInfo(movies) {
-	let list = "";
-	movies.forEach(movie => {
-		if (movie) {
-			list += `<div class="movie-info-card">
+function createRenderedMovieContent(movies) {
+	return movies.reduce((acc, movie) => {
+		return (acc += `<div class ="movie-info-card">
 			  <a href="./pages/details.html?id=${movie.id}" target="_blank">
           <img class="movie-img" src=${movie.images.small} alt="movie's image">
         </a>
@@ -57,10 +53,8 @@ function showMovieInfo(movies) {
 					  <button class="movie-description">查看详情</button>
 				  </a>
         </div>
-      </div>`;
-		}
-	});
-	return list;
+      </div>`);
+	}, "");
 }
 
 function searchMovieByKeyWords() {
