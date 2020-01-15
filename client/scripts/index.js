@@ -58,15 +58,12 @@ function createRenderedMovieContent(movies) {
 }
 
 function searchMovieByKeyWords() {
-	const keyWords = document.getElementsByClassName("nav-search-bar")[0].value;
-	const searchList = document.getElementsByClassName("search-movie-lists")[0];
+	const keyWords = _$("nav-search-bar")[0].value;
+	const searchList = _$("search-movie-lists")[0];
 	searchList.innerHTML = "";
-	const searchBar = document.getElementsByClassName("nav-search-bar")[0];
-	const singleMovie = moviesData.subjects.filter(item => {
-		if (keyWords !== "") {
-			return item.title.includes(keyWords);
-		}
-	});
+	const searchBar = _$("nav-search-bar")[0];
+	const singleMovie = moviesData.subjects.filter(item => item.title.includes(keyWords));
+	console.log(singleMovie);
 
 	if (singleMovie.length) {
 		searchList.style.top = searchBar.style.top + searchBar.style.height;
@@ -75,11 +72,9 @@ function searchMovieByKeyWords() {
 		searchList.style.display = "block";
 		let list = showSearchList(singleMovie);
 		searchList.innerHTML = list;
-	} /* else {
-		alert("没有找到该电影");
-		document.getElementsByClassName("nav-search-bar")[0].value = "";
-		searchList.style.display = "none";
-	} */
+	} else {
+		searchList.innerHTML = "骚奥瑞，没有找到对应的电影信息:D";
+	}
 }
 
 function showSearchList(movies) {
@@ -93,4 +88,5 @@ function showSearchList(movies) {
 	});
 	return list;
 }
+
 loadAllData();
