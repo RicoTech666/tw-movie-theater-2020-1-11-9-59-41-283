@@ -59,36 +59,25 @@ function createRenderedMovieContent(movies) {
 
 function searchMovieByKeyWords() {
 	const keyWords = _$("nav-search-bar")[0].value;
-
 	const searchList = _$("search-movie-lists")[0];
-	const searchBar = _$("nav-search-bar")[0];
 	const matchedMovies = moviesData.subjects.filter(item => item.title.includes(keyWords));
-	searchList.style.top = searchBar.style.top + searchBar.style.height;
-	searchList.style.left = searchBar.style.left + "150px";
-	searchList.style.width = searchBar.style.width;
-	searchList.style.display = "block";
+
 	if ("" === keyWords) {
 		searchList.innerHTML = "";
 		return;
-	}
-	if (matchedMovies.length > 0) {
-		let list = showSearchList(matchedMovies);
-		searchList.innerHTML = list;
+	} else if (matchedMovies.length > 0) {
+		searchList.innerHTML = getSearchListContent(matchedMovies);
 	} else {
 		searchList.innerHTML = "骚奥瑞，没有找到对应的电影信息:D";
 	}
 }
 
-function showSearchList(movies) {
-	let list = "";
-	movies.forEach(movie => {
-		if (movie) {
-			list += `<li><a href="./pages/details.html?id=${movie.id}" target="_blank">
+function getSearchListContent(movies) {
+	return movies.reduce((acc, movie) => {
+		return (acc += `<li><a href="./pages/details.html?id=${movie.id}" target="_blank">
 			<img src=${movie.images.small} alt="movie's image" width="20%">
-			<span>${movie.title} ${movie.rating.average} (${movie.year})</span></a>`;
-		}
-	});
-	return list;
+			<span>${movie.title} ${movie.rating.average} (${movie.year})</span></a>`);
+	}, "");
 }
 
 loadAllData();
