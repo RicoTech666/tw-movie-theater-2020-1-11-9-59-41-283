@@ -45,61 +45,40 @@
 	box-shadow: 1px 1px 0px #d1d1d1;
 }
 
-.nav-search-btn {
-	width: 40px;
-	height: 30px;
-	border: none;
-	border-radius: 3px;
-	outline: none;
-	background-color: rgb(89, 169, 235);
-}
-
-.nav-search-btn:hover {
-	opacity: 0.6;
-}
-
-.nav-search-btn:hover {
-	cursor: pointer;
-}
-
 .movie-page {
 	display: flex;
 	margin: 65px 20px 20px;
 }
 
 .genres-list {
-	width: 110rem;
 	line-height: 50px;
+	height: 700px;
+	border-radius: 5px;
+	background-color: rgb(238, 238, 238);
 }
 
 .genres-head {
 	padding: 10px;
 	font-size: 25px;
-	color: #27a;
-	background-color: #f5f5f5;
+	text-align: center;
+	color: rgb(39, 126, 177);
 }
 
 .genres-name {
-	width: 160px;
-	column-count: 2;
+	width: 180px;
 	list-style: none;
 }
 
 .genres-name li {
-	background-color: #f5f5f5;
+	width: 80px;
 	float: left;
 	display: block;
+	margin: 5px;
+	text-align: center;
 }
 
 .movie-genres {
-	padding: 5px;
-	border: 0;
 	font-size: 20px;
-	color: #27a;
-}
-
-.movie-genres:hover {
-	opacity: 0.3;
 }
 
 .movie-list {
@@ -126,23 +105,20 @@
 	margin-top: 5px;
 }
 
-.movie-info {
+.card-cotent p {
 	margin-top: 5px;
+}
+
+.movie-info {
+	display: inline;
+	margin-left: 5px;
+	color: rgb(136, 121, 121);
 }
 
 .movie-description {
 	position: absolute;
 	bottom: 5px;
-	width: 70px;
-	height: 25px;
 	margin-top: 15px;
-	border: none;
-	border-radius: 5px;
-	background-color: cadetblue;
-	color: white;
-	text-align: center;
-	outline: none;
-	cursor: pointer;
 }
 
 .search-movie-lists {
@@ -154,11 +130,17 @@
 	z-index: 2;
 }
 
-.search-movie-lists li {
-	border-bottom: 1px solid #eee;
-	overflow: hidden;
+button {
+	padding: 5px 8px 5px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
+	color: rgb(39, 126, 177);;
+	background-color: #e2e2e2;
 }
 
-.search-movie-lists li :hover {
-	opacity: 0.8;
+button:hover {
+	opacity: 0.6;
+	cursor: pointer;
 }
