@@ -63,7 +63,6 @@ function searchMovieByKeyWords() {
 
 	if ("" !== keyWords) {
 		if (matchedMovies.length > 0) {
-			_$("movie-list")[0].innerHTML = "";
 			_$("movie-list")[0].innerHTML = createRenderedMovieContent(matchedMovies);
 		} else {
 			_$("movie-list")[0].innerHTML = "骚奥瑞，没有找到对应的电影信息:D";
