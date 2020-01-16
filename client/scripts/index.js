@@ -1,5 +1,9 @@
-let BASIC_URL = "http://127.0.0.1:8888";
+const BASIC_URL = "http://127.0.0.1:8888";
+const movieNumPerPage = 6;
 let moviesData;
+let maxPages;
+let currentPage;
+let moviesToBeDisplayed;
 
 function _$(className) {
 	return document.getElementsByClassName(className);
@@ -31,11 +35,47 @@ function renderMoviesGenres(genres) {
 function displayByGenres() {
 	const selectedGenre = event.target.innerHTML;
 	let selectedMovies = moviesData.subjects.filter(elem => elem.genres.toString().includes(selectedGenre));
-	_$("movie-list")[0].innerHTML = createRenderedMovieContent(selectedMovies);
+	_$("movie-list")[0].innerHTML = createRenderedMovieContent(selectedMovies.slice(0, movieNumPerPage));
+
+	initinalizePageCount(selectedMovies);
 }
 
 function renderAllMovies(movies) {
-	_$("movie-list")[0].innerHTML = createRenderedMovieContent(movies.subjects);
+	_$("movie-list")[0].innerHTML = createRenderedMovieContent(movies.subjects.slice(0, movieNumPerPage));
+
+	initinalizePageCount(movies.subjects);
+}
+
+function initinalizePageCount(movies) {
+	moviesToBeDisplayed = movies;
+	console.log(moviesToBeDisplayed);
+	currentPage = 1;
+	maxPages = Math.ceil(movies.length / movieNumPerPage);
+	_$("page-count")[0].innerHTML = `${currentPage}/${maxPages}`;
+}
+
+function displayPreviousPage() {
+	if (1 === currentPage) {
+		alert("骚奥瑞，没有上一页了");
+	} else {
+		currentPage--;
+		let currentPos = (currentPage - 1) * movieNumPerPage;
+		let endPos = currentPos + movieNumPerPage;
+		_$("movie-list")[0].innerHTML = createRenderedMovieContent(moviesToBeDisplayed.slice(currentPos, endPos));
+		_$("page-count")[0].innerHTML = `${currentPage}/${maxPages}`;
+	}
+}
+
+function displayNextPage() {
+	if (currentPage === maxPages) {
+		alert("骚奥瑞，没有下一页了");
+	} else {
+		let currentPos = currentPage * movieNumPerPage;
+		let endPos = currentPos + movieNumPerPage;
+		currentPage++;
+		_$("movie-list")[0].innerHTML = createRenderedMovieContent(moviesToBeDisplayed.slice(currentPos, endPos));
+		_$("page-count")[0].innerHTML = `${currentPage}/${maxPages}`;
+	}
 }
 
 function createRenderedMovieContent(movies) {
