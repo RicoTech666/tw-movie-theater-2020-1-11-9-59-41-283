@@ -59,25 +59,16 @@ function createRenderedMovieContent(movies) {
 
 function searchMovieByKeyWords() {
 	const keyWords = _$("nav-search-bar")[0].value;
-	const searchList = _$("search-movie-lists")[0];
 	const matchedMovies = moviesData.subjects.filter(item => item.title.includes(keyWords));
 
-	if ("" === keyWords) {
-		searchList.innerHTML = "";
-		return;
-	} else if (matchedMovies.length > 0) {
-		searchList.innerHTML = getSearchListContent(matchedMovies);
-	} else {
-		searchList.innerHTML = "骚奥瑞，没有找到对应的电影信息:D";
+	if ("" !== keyWords) {
+		if (matchedMovies.length > 0) {
+			_$("movie-list")[0].innerHTML = "";
+			_$("movie-list")[0].innerHTML = createRenderedMovieContent(matchedMovies);
+		} else {
+			_$("movie-list")[0].innerHTML = "骚奥瑞，没有找到对应的电影信息:D";
+		}
 	}
-}
-
-function getSearchListContent(movies) {
-	return movies.reduce((acc, movie) => {
-		return (acc += `<li><a href="./pages/details.html?id=${movie.id}" target="_blank">
-			<img src=${movie.images.small} alt="movie's image" width="20%">
-			<span>${movie.title} ${movie.rating.average} (${movie.year})</span></a>`);
-	}, "");
 }
 
 loadAllData();
