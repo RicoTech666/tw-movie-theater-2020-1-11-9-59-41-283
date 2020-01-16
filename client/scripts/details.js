@@ -11,13 +11,42 @@ function loadMovie() {
 		url: BASIC_URL + "/v2/movie/subject/" + movieId + "?apikey=0df993c66c0c636e29ecbb5344252a4a",
 		method: "GET",
 		success: function(response) {
+			getComments(movieId);
 			renderMovieDetailedInfo(response);
 			getSimilarMovies(response);
 		},
 		fail: function(error) {
 			console.log("request fail!");
-		}
+		},
 	});
+}
+
+function getComments(movieId) {
+	ajax({
+		url:
+			BASIC_URL +
+			"/v2/movie/subject/" +
+			movieId +
+			"/comments" +
+			"?start=1&count=5&apikey=0df993c66c0c636e29ecbb5344252a4a",
+		method: "GET",
+		success: function(response) {
+			renderComments(response);
+		},
+		fail: function(error) {
+			console.log("request fail!");
+		},
+	});
+}
+
+function renderComments(commentsObj) {
+	_$("comments-content")[0].innerHTML = commentsObj.comments.reduce((acc, cur) => {
+		return (acc += `<div class = "comment-cell">
+		<div class="comment-author"><img src=${cur.author.avatar} / ><span>${cur.author.uid}</span></div>
+		<div class="comment-short-content">${cur.content}</div>
+		<div class="comment-time">${cur.created_at}</div>
+		</div>`);
+	}, "");
 }
 
 function renderMovieDetailedInfo(movieObj) {
@@ -45,7 +74,7 @@ function getSimilarMovies(movieObj) {
 		},
 		fail: function(error) {
 			console.log("request fail!");
-		}
+		},
 	});
 }
 
@@ -57,7 +86,7 @@ function renderSimilarMovies(currentMovie, response) {
 			(elem.genres.toString().includes(currentMovieGenres) || currentMovieGenres.includes(elem.genres.toString())) &&
 			elem.id !== currentMovieId
 	);
-	let truncatedMovies = truncateMovieArr(similarMovies, 10);
+	let truncatedMovies = truncateMovieArr(similarMovies, 7);
 	_$("similar-movies-content")[0].innerHTML = truncatedMovies.reduce((acc, cur) => {
 		return (acc += `<div class="similar-movie-cell">
  		<a href="./details.html?id=${cur.id}" target="_blank">
