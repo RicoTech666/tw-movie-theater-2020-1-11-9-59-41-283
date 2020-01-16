@@ -52,6 +52,51 @@
 	margin: 20px;
 }
 
+.comments-content {
+	margin-top: 20px;
+}
+
+.comment-cell {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 60px;
+	color: rgb(136, 121, 121);
+	border-bottom: 1px dashed rgb(136, 121, 121);
+}
+
+.comment-author {
+	display: flex;
+	align-items: center;
+	width: 20%;
+}
+
+.comment-author img {
+	border-radius: 50%;
+}
+
+.comment-author span {
+	padding: 3px;
+	margin-left: 5px;
+	border-radius: 3px;
+	background: rgba(63, 163, 221, 0.3);
+}
+
+.comment-short-content {
+	width: 50%;
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-break: break-all;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+.comment-time {
+	width: 30%;
+	text-align: right;
+}
+
 .comments-banner,
 .summary-banner,
 .similar-movies-banner {

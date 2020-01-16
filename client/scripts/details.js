@@ -43,7 +43,7 @@ function renderComments(commentsObj) {
 	_$("comments-content")[0].innerHTML = commentsObj.comments.reduce((acc, cur) => {
 		return (acc += `<div class = "comment-cell">
 		<div class="comment-author"><img src=${cur.author.avatar} / ><span>${cur.author.uid}</span></div>
-		<div class="comment-short-content">${cur.content}</div>
+		<div class="comment-short-content" title="${cur.content}">${cur.content}</div>
 		<div class="comment-time">${cur.created_at}</div>
 		</div>`);
 	}, "");
