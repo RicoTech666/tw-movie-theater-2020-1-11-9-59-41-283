@@ -11,66 +11,8 @@
 	line-height: 60px;
 }
 
-.header {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	height: 60px;
-	background-color: #d1d1d1;
-	z-index: 1;
-}
-
-.nav-content {
-	width: 100%;
-}
-
-.nav-logo {
-	display: inline-block;
-	width: 20%;
-	height: 60px;
-	margin: 0 40px 0;
-	font-size: 30px;
-	line-height: 60px;
-	text-decoration: none;
-	color: #27a;
-	background-color: transparent;
-}
-
-#search-form {
-	position: absolute;
-	top: 10px;
-	right: 10%;
-}
-
-.nav-search-bar {
-	width: 200px;
-	padding: 10px;
-	margin-right: 10px;
-	border: none;
-	border-radius: 5px;
-	outline: none;
-	box-shadow: 1px 1px 0px #d1d1d1;
-}
-
-.nav-search-btn {
-	width: 40px;
-	height: 30px;
-	border: none;
-	border-radius: 3px;
-	outline: none;
-	background-color: rgb(89, 169, 235);
-}
-
-.nav-search-btn:hover {
-	opacity: 0.6;
-}
-
-.nav-search-btn:hover {
-	cursor: pointer;
-}
-
 .movie-intro {
-	margin: 20px;
+	margin: 85px 20px 20px;
 }
 
 .movie-name {
@@ -83,9 +25,12 @@
 
 .movie-other-info {
 	display: inline-block;
-	position: relative;
-	top: -20px;
-	margin: 0 15% 0;
+	position: absolute;
+	margin: 0 5% 0;
+}
+
+.movie-other-info p {
+	margin-bottom: 7px;
 }
 
 .movie-other-info span {
@@ -109,7 +54,8 @@
 	padding: 10px;
 	border-radius: 5px;
 	font-size: 20px;
-	background: rgba(131, 131, 131, 0.4);
+	background: #e2e2e2;
+	color: rgb(39, 126, 177);
 }
 
 .similar-movies-banner {
@@ -119,38 +65,35 @@
 .summary p {
 	margin: 20px;
 	text-indent: 2em;
+	font-size: 17px;
+	letter-spacing: 3px;
+	line-height: 2;
 }
 
 .similar-movies-content {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
 }
 
 .similar-movie-cell {
-	width: 20%;
+	position: relative;
+	width: 13rem;
+	height: 500px;
+	margin: 20px;
 }
 
-.similar-movie-poster img {
-	display: block;
-	width: 50%;
-	height: 300px;
-	margin: auto;
-}
-
-.similar-movie-title {
-	margin: 20px 0 10px;
-	font-weight: bold;
-	text-align: center;
+.similar-movie-cell img {
+	height: 60%;
+	cursor: pointer;
 }
 
 .similar-movie-rating {
-	margin: 0 0 40px;
-	text-align: center;
+	margin: 15px 0 10px;
 }
 
 .similar-movie-rating span {
-	padding: 6px;
+	padding: 5px;
 	border-radius: 3px;
-	background-color: rgba(131, 131, 131, 0.4);
+	background-color: #e2e2e2;
+	color: rgb(39, 126, 177);
 }
