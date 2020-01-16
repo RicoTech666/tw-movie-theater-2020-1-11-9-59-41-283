@@ -39,29 +39,6 @@ function getComments(movieId) {
 	});
 }
 
-function renderComments(commentsObj) {
-	_$("comments-content")[0].innerHTML = commentsObj.comments.reduce((acc, cur) => {
-		return (acc += `<div class = "comment-cell">
-		<div class="comment-author"><img src=${cur.author.avatar} / ><span>${cur.author.uid}</span></div>
-		<div class="comment-short-content" title="${cur.content}">${cur.content}</div>
-		<div class="comment-time">${cur.created_at}</div>
-		</div>`);
-	}, "");
-}
-
-function renderMovieDetailedInfo(movieObj) {
-	_$("movie-title")[0].innerHTML = `${movieObj.title}(${movieObj.year})`;
-	_$("movie-poster")[0].innerHTML = `<img src="${movieObj.images.small}" />`;
-	_$("director")[0].innerHTML = movieObj.directors.map(elem => elem.name);
-	_$("casts")[0].innerHTML = movieObj.casts.map(elem => elem.name);
-	_$("genres")[0].innerHTML = movieObj.genres;
-	_$("countries")[0].innerHTML = movieObj.countries;
-	_$("pubdate")[0].innerHTML = `${movieObj.mainland_pubdate}(中国大陆)/${movieObj.pubdate}(${movieObj.countries})`;
-	_$("durations")[0].innerHTML = movieObj.durations;
-	_$("rating")[0].innerHTML = `${movieObj.rating.average}/${movieObj.rating.max}`;
-	_$("summary-content")[0].innerHTML = movieObj.summary;
-}
-
 function getSimilarMovies(movieObj) {
 	ajax({
 		url:
@@ -76,6 +53,16 @@ function getSimilarMovies(movieObj) {
 			console.log("request fail!");
 		},
 	});
+}
+
+function renderComments(commentsObj) {
+	_$("comments-content")[0].innerHTML = commentsObj.comments.reduce((acc, cur) => {
+		return (acc += `<div class = "comment-cell">
+		<div class="comment-author"><img src=${cur.author.avatar} / ><span>${cur.author.uid}</span></div>
+		<div class="comment-short-content" title="${cur.content}">${cur.content}</div>
+		<div class="comment-time">${cur.created_at}</div>
+		</div>`);
+	}, "");
 }
 
 function renderSimilarMovies(currentMovie, response) {
@@ -103,6 +90,19 @@ function renderSimilarMovies(currentMovie, response) {
 		</div>
 		</div>`);
 	}, "");
+}
+
+function renderMovieDetailedInfo(movieObj) {
+	_$("movie-title")[0].innerHTML = `${movieObj.title}(${movieObj.year})`;
+	_$("movie-poster")[0].innerHTML = `<img src="${movieObj.images.small}" />`;
+	_$("director")[0].innerHTML = movieObj.directors.map(elem => elem.name);
+	_$("casts")[0].innerHTML = movieObj.casts.map(elem => elem.name);
+	_$("genres")[0].innerHTML = movieObj.genres;
+	_$("countries")[0].innerHTML = movieObj.countries;
+	_$("pubdate")[0].innerHTML = `${movieObj.mainland_pubdate}(中国大陆)/${movieObj.pubdate}(${movieObj.countries})`;
+	_$("durations")[0].innerHTML = movieObj.durations;
+	_$("rating")[0].innerHTML = `${movieObj.rating.average}/${movieObj.rating.max}`;
+	_$("summary-content")[0].innerHTML = movieObj.summary;
 }
 
 function truncateMovieArr(movieArr, cutNum) {
@@ -133,12 +133,12 @@ function searchMovieByKeyWords() {
 	const matchedMovies = moviesData.subjects.filter(item => item.title.includes(keyWords));
 	if ("" !== keyWords) {
 		if (matchedMovies.length > 0) {
-			_$("similar-movies-content")[0].innerHTML = createRenderedMovieContent(matchedMovies);
+			_$("search-result-content")[0].innerHTML = createRenderedMovieContent(matchedMovies);
 		} else {
-			_$("similar-movies-content")[0].innerHTML = "骚奥瑞，没有找到对应的电影信息:D";
+			_$("search-result-content")[0].innerHTML = "骚奥瑞，没有找到对应的电影信息:D";
 		}
-		_$("similar-movies-banner")[0].innerHTML = "搜索结果";
 	}
+	_$("search-result")[0].style.display = "block";
 }
 
 loadMovie();

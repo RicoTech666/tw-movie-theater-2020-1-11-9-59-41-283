@@ -97,6 +97,7 @@
 	text-align: right;
 }
 
+.search-result-banner,
 .comments-banner,
 .summary-banner,
 .similar-movies-banner {
@@ -146,4 +147,22 @@
 	border-radius: 3px;
 	background-color: #e2e2e2;
 	color: rgb(39, 126, 177);
+}
+
+.search-result {
+	display: none;
+}
+
+.search-result-banner {
+	position: relative;
+	top: 80px;
+	margin: 20px;
+}
+
+.search-result-content {
+	display: flex;
+	justify-content: space-around;
+	margin: 20px;
+	padding-top: 80px;
+	border-bottom: 1px dashed rgb(136, 121, 121);
 }
