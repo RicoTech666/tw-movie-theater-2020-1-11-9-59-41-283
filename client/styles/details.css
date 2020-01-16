@@ -73,7 +73,6 @@
 .similar-movies-content {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
 }
 
 .similar-movie-cell {

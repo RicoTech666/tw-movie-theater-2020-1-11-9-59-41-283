@@ -83,15 +83,15 @@ function truncateMovieArr(movieArr, cutNum) {
 function createRenderedMovieContent(movies) {
 	return movies.reduce((acc, movie) => {
 		return (acc += `<div class ="movie-info-card">
-			  <a href="./details.html?id=${movie.id}" target="_blank">
+			  <a href="./pages/details.html?id=${movie.id}" target="_blank">
           <img class="movie-img" src=${movie.images.small} alt="movie's image">
         </a>
         <div class="card-cotent">
           <h4 class="movie-title">${movie.title} ${movie.rating.average} (${movie.year})</h4>
-          <p class="movie-info">导演: ${movie.directors.map(movie => movie.name)}</p>
-          <p class="movie-info">演员: ${movie.casts.map(movie => movie.name)}</p>
-          <p class="movie-info">类别: ${movie.genres}</p>
-				  <a href="./details.html?id=${movie.id}" target="_blank">
+          <p>导演: <span class="movie-info"> ${movie.directors.map(movie => movie.name)}<span></p>
+          <p>演员: <span class="movie-info"> ${movie.casts.map(movie => movie.name)}<span></p>
+          <p>类别: <span class="movie-info">${movie.genres}<span></p>
+				  <a href="./pages/details.html?id=${movie.id}" target="_blank">
 					  <button class="movie-description">查看详情</button>
 				  </a>
         </div>
