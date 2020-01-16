@@ -5,6 +5,7 @@ let moviesData;
 function _$(className) {
 	return document.getElementsByClassName(className);
 }
+
 function loadMovie() {
 	ajax({
 		url: BASIC_URL + "/v2/movie/subject/" + movieId + "?apikey=0df993c66c0c636e29ecbb5344252a4a",
@@ -18,6 +19,7 @@ function loadMovie() {
 		},
 	});
 }
+
 function renderMovieDetailedInfo(movieObj) {
 	_$("movie-title")[0].innerHTML = `${movieObj.title}(${movieObj.year})`;
 	_$("movie-poster")[0].innerHTML = `<img src="${movieObj.images.small}" />`;
