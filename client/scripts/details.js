@@ -16,7 +16,7 @@ function loadMovie() {
 		},
 		fail: function(error) {
 			console.log("request fail!");
-		},
+		}
 	});
 }
 
@@ -45,7 +45,7 @@ function getSimilarMovies(movieObj) {
 		},
 		fail: function(error) {
 			console.log("request fail!");
-		},
+		}
 	});
 }
 
@@ -60,13 +60,18 @@ function renderSimilarMovies(currentMovie, response) {
 	let truncatedMovies = truncateMovieArr(similarMovies, 10);
 	_$("similar-movies-content")[0].innerHTML = truncatedMovies.reduce((acc, cur) => {
 		return (acc += `<div class="similar-movie-cell">
-		<div class="similar-movie-poster">
  		<a href="./details.html?id=${cur.id}" target="_blank">
 		<img src="${cur.images.small}" />
 		</a>
-		</div>
-		<div class = "similar-movie-title">${cur.title}</div>
+		<div class="card-cotent">
+		<h4 class = "movie-title">${cur.title} (${cur.year})</h4>
 		<div class = "similar-movie-rating"><span>${cur.rating.average}/${cur.rating.max}</span></div>	
+		<p>导演: <span class="movie-info"> ${cur.directors.map(cur => cur.name)}<span></p>
+    <p>演员: <span class="movie-info"> ${cur.casts.map(cur => cur.name)}<span></p>
+		<a href="./details.html?id=${cur.id}" target="_blank">
+		<button class="movie-description">查看详情</button>
+		</a>
+		</div>
 		</div>`);
 	}, "");
 }
