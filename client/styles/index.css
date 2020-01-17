@@ -48,7 +48,7 @@ body {
 
 .movie-page {
 	display: grid;
-	grid-template-columns: 10% auto;
+	grid-template-columns: 180px auto;
 	margin: 68px 0 20px;
 }
 
