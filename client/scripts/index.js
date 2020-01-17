@@ -108,6 +108,7 @@ function searchMovieByKeyWords() {
 			_$("movie-list")[0].innerHTML = "骚奥瑞，没有找到对应的电影信息:D";
 		}
 	}
+	initinalizePageCount(matchedMovies);
 }
 
 loadAllData();

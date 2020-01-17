@@ -12,7 +12,7 @@
 }
 
 .movie-intro {
-	margin: 85px 20px 20px;
+	margin: 85px 0;
 }
 
 .movie-name {
@@ -41,19 +41,19 @@
 
 .summary {
 	clear: left;
-	margin: 50px 20px 20px;
+	margin: 50px 0;
 }
 
 .similar-movies {
-	margin: 20px;
+	margin: 20px 0;
 }
 
 .comments {
-	margin: 20px;
+	margin: 20px 0;
 }
 
 .comments-content {
-	margin-top: 20px;
+	margin: 20px;
 }
 
 .comment-cell {
@@ -124,13 +124,14 @@
 .similar-movies-content {
 	display: flex;
 	flex-wrap: wrap;
+	margin: -20px;
 }
 
 .similar-movie-cell {
 	position: relative;
 	width: 13rem;
 	height: 500px;
-	margin: 20px;
+	margin: 40px;
 }
 
 .similar-movie-cell img {
@@ -161,8 +162,7 @@
 
 .search-result-content {
 	display: flex;
-	justify-content: space-around;
 	margin: 20px;
-	padding-top: 80px;
+	padding-top: 60px;
 	border-bottom: 1px dashed rgb(136, 121, 121);
 }

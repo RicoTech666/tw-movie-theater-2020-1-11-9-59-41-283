@@ -4,17 +4,18 @@
 	font-family: sans-serif, serif;
 }
 
+body {
+	margin: 0 20px;
+}
+
 .header {
 	position: fixed;
 	top: 0;
-	width: 100%;
+	margin: 0 auto;
+	width: calc(100% - 40px);
 	height: 60px;
 	background-color: #d1d1d1;
 	z-index: 1;
-}
-
-.nav-content {
-	width: 100%;
 }
 
 .nav-logo {
@@ -47,12 +48,11 @@
 
 .movie-page {
 	display: flex;
-	margin: 65px 20px 20px;
+	margin: 68px 0 20px;
 }
 
 .genres-list {
 	line-height: 50px;
-	height: 700px;
 	border-radius: 5px;
 	background-color: rgb(238, 238, 238);
 }
@@ -143,4 +143,10 @@ button {
 button:hover {
 	opacity: 0.6;
 	cursor: pointer;
+}
+
+.select-movie-page {
+	width: 250px;
+	margin: 20px 0;
+	text-align: right;
 }
