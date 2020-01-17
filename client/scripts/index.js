@@ -48,7 +48,6 @@ function renderAllMovies(movies) {
 
 function initinalizePageCount(movies) {
 	moviesToBeDisplayed = movies;
-	console.log(moviesToBeDisplayed);
 	currentPage = 1;
 	maxPages = Math.ceil(movies.length / movieNumPerPage);
 	_$("page-count")[0].innerHTML = `${currentPage}/${maxPages}`;

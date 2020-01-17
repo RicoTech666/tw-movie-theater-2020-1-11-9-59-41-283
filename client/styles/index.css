@@ -47,7 +47,8 @@ body {
 }
 
 .movie-page {
-	display: flex;
+	display: grid;
+	grid-template-columns: 10% auto;
 	margin: 68px 0 20px;
 }
 
@@ -82,10 +83,10 @@ body {
 }
 
 .movie-list {
-	position: relative;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-evenly;
+	align-items: center;
+	justify-content: center;
 }
 
 .movie-info-card {
@@ -136,7 +137,7 @@ button {
 	border: none;
 	border-radius: 5px;
 	text-align: center;
-	color: rgb(39, 126, 177);;
+	color: rgb(39, 126, 177);
 	background-color: #e2e2e2;
 }
 
@@ -146,7 +147,16 @@ button:hover {
 }
 
 .select-movie-page {
-	width: 250px;
-	margin: 20px 0;
-	text-align: right;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.movie-display-unit {
+	display: grid;
+	grid-template-rows: auto 5%;
+}
+
+.page-count {
+	margin: 0 5px 0;
 }

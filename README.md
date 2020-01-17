@@ -9,7 +9,6 @@ This is a primitive film reviews website with main page displaying top movies on
 - build detail page
 - get and render movie-detailed information on detail page
 - get and render similar movies on detial page
-- add movie comments and corresponding styles for detail page
 - sort and display movies by genres on main page
 - refactor how to render movies by genres on main page by clicking buttons to change page number
 - refactor how to get and render all genres on main page
@@ -24,6 +23,7 @@ This is a primitive film reviews website with main page displaying top movies on
 - get and render all genres on main page
 - refactor styles for genres list on main page
 - refactor styles for all the pages to ensure consistency of styles
+- fix bugs for page number selection
 - refactor all `.css` files
 
 ## How To Start
