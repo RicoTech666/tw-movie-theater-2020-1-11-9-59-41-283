@@ -56,6 +56,7 @@ function getSimilarMovies(movieObj) {
 }
 
 function renderComments(commentsObj) {
+	_$("comments-banner")[0].innerHTML = `${commentsObj.subject.title}的短评`;
 	_$("comments-content")[0].innerHTML = commentsObj.comments.reduce((acc, cur) => {
 		return (acc += `<div class = "comment-cell">
 		<div class="comment-author"><img src=${cur.author.avatar} / ><span>${cur.author.uid}</span></div>
@@ -93,7 +94,7 @@ function renderSimilarMovies(currentMovie, response) {
 }
 
 function renderMovieDetailedInfo(movieObj) {
-	_$("movie-title")[0].innerHTML = `${movieObj.title}(${movieObj.year})`;
+	_$("movie-title")[0].innerHTML = `${movieObj.title} (${movieObj.year})`;
 	_$("movie-poster")[0].innerHTML = `<img src="${movieObj.images.small}" />`;
 	_$("director")[0].innerHTML = movieObj.directors.map(elem => elem.name);
 	_$("casts")[0].innerHTML = movieObj.casts.map(elem => elem.name);
@@ -141,4 +142,7 @@ function searchMovieByKeyWords() {
 	_$("search-result")[0].style.display = "block";
 }
 
+function closeAds() {
+	_$("intro-region-ads")[0].style.display = "none";
+}
 loadMovie();

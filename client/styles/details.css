@@ -23,9 +23,37 @@
 	display: inline-block;
 }
 
+.intro-region-ads {
+	position: absolute;
+	right: 10%;
+	display: inline-block;
+}
+
+.intro-region-ads:hover {
+	opacity: 0.8;
+}
+
+.intro-region-ads a {
+	cursor: default;
+}
+
+.intro-region-ads span {
+	position: absolute;
+	display: inline-block;
+	right: 10px;
+	top: 10px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.intro-region-ads span:hover {
+	background: #d1d1d1;
+}
+
 .movie-other-info {
 	display: inline-block;
 	position: absolute;
+	font-weight: bolder;
 	margin: 0 5% 0;
 }
 
@@ -77,7 +105,7 @@
 
 .comment-author span {
 	padding: 3px;
-	margin-left: 5px;
+	margin-left: 20px;
 	border-radius: 3px;
 	background: rgba(63, 163, 221, 0.3);
 }

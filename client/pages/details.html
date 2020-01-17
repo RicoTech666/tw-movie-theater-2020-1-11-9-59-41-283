@@ -7,6 +7,7 @@
 		<title>Movie Detail Page</title>
 		<link rel="stylesheet" type="text/css" href="../styles/details.css" />
 		<link rel="stylesheet" type="text/css" href="../styles/index.css" />
+		<link rel="stylesheet" type="text/css" href="../styles/iconfont.css" />
 	</head>
 	<body>
 		<div class="header">
@@ -15,9 +16,8 @@
 				<div id="search-form">
 					<input class="nav-search-bar" type="text" placeholder="搜索电影" />
 					<button class="nav-search-btn" onclick="searchMovieByKeyWords()">搜索</button>
-				</form>
+				</div>
 			</div>
-		</div>
 		</div>
 		<div class="search-result">
 			<div class="search-result-banner">搜索结果</div>
@@ -37,13 +37,23 @@
 				<p>片长:<span class="durations"></span></p>
 				<p>评分:<span class="rating"></span></p>
 			</div>
+			<div class="intro-region-ads">
+				<a
+					href="https://www.travelzoo.com/cn/%E6%B3%A8%E5%86%8C%E8%A7%A3%E9%94%81%E4%BC%98%E6%83%A0-3k-%E5%90%AB%E7%A8%8E%E5%BE%80%E8%BF%94%E9%A3%9E%E5%86%B0%E5%B2%9B-
+					%E6%9C%AC%E5%AD%A3%E6%9C%80%E5%90%8E%E6%9E%81%E5%85%89-%E6%B3%A1%E8%93%9D%E6%B9%96%E6%B8%A9%E6%B3%89-%E8%A1%8C%E8%B5%B0%E5%86%B0%E5%B7%9D%E9%9A%A7%E9%81%93-2840585/
+					?_noxout=1&source=db_pc_il&utm_source=db_&utm_medium=pc&utm_term=datu&utm_campaign=dealpage&utm_content=2840585"
+				>
+					<img src="../images/icelandAds.PNG" alt="Oops,somthing went wrong"
+				/></a>
+				<span class="icon-close iconfont" onclick="closeAds()">&#xe600;</span>
+			</div>
 		</div>
 		<div class="summary">
 			<div class="summary-banner">剧情简介</div>
 			<p class="summary-content"></p>
 		</div>
 		<div class="comments">
-			<div class="comments-banner">影评</div>
+			<div class="comments-banner"></div>
 			<div class="comments-content"></div>
 		</div>
 		<div class="similar-movies">
