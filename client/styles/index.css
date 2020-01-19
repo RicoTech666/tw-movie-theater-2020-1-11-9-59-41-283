@@ -82,6 +82,10 @@ body {
 	font-size: 20px;
 }
 
+.movie-genres:focus {
+	outline: thin dashed;
+}
+
 .movie-list {
 	display: flex;
 	flex-wrap: wrap;
