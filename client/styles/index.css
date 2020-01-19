@@ -92,6 +92,18 @@ body {
 	padding-left: 5%;
 }
 
+.alert-box {
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	width: 200px;
+	height: 120px;
+	background: rgb(136, 121, 121);
+}
+
 .movie-info-card {
 	position: relative;
 	width: 13rem;

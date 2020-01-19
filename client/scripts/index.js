@@ -53,9 +53,15 @@ function initinalizePageCount(movies) {
 	_$("page-count")[0].innerHTML = `${currentPage}/${maxPages}`;
 }
 
+function displayAlertBox(alertContent) {
+	_$("alert-box")[0].innerHTML = alertContent;
+	_$("alert-box")[0].style.display = "block";
+	setTimeout('_$("alert-box")[0].style.display = "none"', 1000);
+}
+
 function displayPreviousPage() {
 	if (1 === currentPage) {
-		alert("骚奥瑞，没有上一页了");
+		displayAlertBox("骚奥瑞，没有上一页了");
 	} else {
 		currentPage--;
 		let currentPos = (currentPage - 1) * movieNumPerPage;
@@ -67,7 +73,7 @@ function displayPreviousPage() {
 
 function displayNextPage() {
 	if (currentPage === maxPages) {
-		alert("骚奥瑞，没有下一页了");
+		displayAlertBox("骚奥瑞，没有下一页了");
 	} else {
 		let currentPos = currentPage * movieNumPerPage;
 		let endPos = currentPos + movieNumPerPage;
