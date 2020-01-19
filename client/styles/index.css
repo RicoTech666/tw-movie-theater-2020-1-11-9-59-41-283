@@ -97,11 +97,13 @@ body {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	transform: translate(-50%, -50%);
 	z-index: 2;
 	width: 200px;
 	height: 120px;
-	background: rgb(136, 121, 121);
+	border-radius: 10px;
+	text-align: center;
+	line-height: 120px;
+	background: rgba(207, 190, 190, 0.623);
 }
 
 .movie-info-card {
